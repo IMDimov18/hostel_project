@@ -34,10 +34,11 @@ void userRegister(USER_DATA* users, int& userCount, int& maxId)
 	cout << endl;
 	cout << "Parent Last Name: "; cin >> user.parentLastName;
 	cout << endl;
+
 	createUser(users, userCount, maxId, user);
 }
 
-bool loginUser(USER_DATA* users, int& userCount, int& maxId)
+void loginUser(USER_DATA* users, int& userCount, int& maxId)
 {
 	string username;
 	string pass;
@@ -47,17 +48,21 @@ bool loginUser(USER_DATA* users, int& userCount, int& maxId)
 
 	for (int i = 0; i < maxId; i++)
 	{
-		if (username == users[i].userName || pass == users[i].password)
+		if (username == users[i].userName && pass == users[i].password)
 		{
 			cout << "Welcome!" << endl;
 			break;
 		}
 	}
-	cout << endl;
-	cout << "The username or password you entered is incorrect. Please, try again!" << endl;
-	return true;
+
+	cout << "The username or password you entered is incorrect.\n Please try again!\n";
 }
 
+bool showAdminMenu(USER_DATA* users, int& userCount, int& maxId)
+{
+	int choice;
+	cout <<
+}
 
 
 bool showMainMenu(USER_DATA* users, int& userCount, int& maxId)
@@ -80,6 +85,7 @@ bool showMainMenu(USER_DATA* users, int& userCount, int& maxId)
 		break;
 	case 2:
 		loginUser(users, userCount, maxId);
+		break;
 	case 6:
 		return false;
 		break;
@@ -96,6 +102,7 @@ int main()
 	int userCount = 0;
 	int maxId = 1;
 	bool showMenu;
+
 	do
 	{
 		showMenu = showMainMenu(users, userCount, maxId);
@@ -103,4 +110,5 @@ int main()
 	cout << endl;
 
 	cout << "Thank you for using our program!  :)" << endl;
+
 }
