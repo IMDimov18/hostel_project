@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 struct USER_DATA
@@ -11,8 +12,8 @@ struct USER_DATA
 	string address;
 	string studentFirstName;
 	string studentLastName;
-	int studentAge=0;
-	int id=1;
+	int studentAge = 0;
+	int id = 1;
 };
 
 void createUser(USER_DATA* users, int& userCount, int& maxId, USER_DATA user)
@@ -22,10 +23,10 @@ void createUser(USER_DATA* users, int& userCount, int& maxId, USER_DATA user)
 	userCount++;
 }
 
-void userRegister(USER_DATA* users,int& userCount, int& maxId)
+void userRegister(USER_DATA* users, int& userCount, int& maxId)
 {
 	USER_DATA user;
-	cout << "Username: "; cin >> user.userName ;
+	cout << "Username: "; cin >> user.userName;
 	cout << endl;
 	cout << "Password: "; cin >> user.password;
 	cout << endl;
@@ -33,8 +34,28 @@ void userRegister(USER_DATA* users,int& userCount, int& maxId)
 	cout << endl;
 	cout << "Parent Last Name: "; cin >> user.parentLastName;
 	cout << endl;
-	
 	createUser(users, userCount, maxId, user);
+}
+
+bool loginUser(USER_DATA* users, int& userCount, int& maxId)
+{
+	string username;
+	string pass;
+
+	cout << "Username: "; cin >> username;
+	cout << "Password: "; cin >> pass;
+
+	for (int i = 0; i < maxId; i++)
+	{
+		if (username == users[i].userName || pass == users[i].password)
+		{
+			cout << "Welcome!" << endl;
+			break;
+		}
+	}
+	cout << endl;
+	cout << "The username or password you entered is incorrect. Please, try again!" << endl;
+	return true;
 }
 
 
@@ -42,11 +63,11 @@ void userRegister(USER_DATA* users,int& userCount, int& maxId)
 bool showMainMenu(USER_DATA* users, int& userCount, int& maxId)
 {
 	int choice;
-	cout << "-------USER MENU-------" << endl;
-	cout << "1. Register" << endl;
-	cout << "2. Login" << endl;
-	cout << "6. Exit" << endl;
-	cout << "What is your choice?: ";
+	cout << setw(70) << "-------LOGIN MENU-------" << endl;
+	cout << setw(59) << "1. Register" << endl;
+	cout << setw(56) << "2. Login" << endl;
+	cout << setw(55) << "6. Exit" << endl;
+	cout << setw(70) << "What is your choice?: ";
 	cin >> choice;
 	if (choice > 6 || choice < 1)
 	{
@@ -57,28 +78,29 @@ bool showMainMenu(USER_DATA* users, int& userCount, int& maxId)
 	case 1:
 		userRegister(users, userCount, maxId);
 		break;
+	case 2:
+		loginUser(users, userCount, maxId);
 	case 6:
 		return false;
 		break;
 	}
 	return true;
 }
-    
+
 
 int main()
 {
 	system("CLS");
 	system("color B");
 	USER_DATA users[10];
-	int userCount=0;
+	int userCount = 0;
 	int maxId = 1;
 	bool showMenu;
-	
 	do
 	{
 		showMenu = showMainMenu(users, userCount, maxId);
 	} while (showMenu);
 	cout << endl;
 
-	cout << "Thank you for using our program!" << endl;
+	cout << "Thank you for using our program!  :)" << endl;
 }
