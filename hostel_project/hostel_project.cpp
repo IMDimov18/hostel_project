@@ -15,7 +15,14 @@ struct USER_DATA
 	int id=1;
 };
 
-void insertData(USER_DATA* us,int& userCount, int& maxId)
+void createUser(USER_DATA* users, int& userCount, int& maxId, USER_DATA user)
+{
+	user.id = maxId++;
+	users[userCount] = user;
+	userCount++;
+}
+
+void userRegister(USER_DATA* users,int& userCount, int& maxId)
 {
 	USER_DATA user;
 	cout << "Username: "; cin >> user.userName ;
@@ -26,20 +33,18 @@ void insertData(USER_DATA* us,int& userCount, int& maxId)
 	cout << endl;
 	cout << "Parent Last Name: "; cin >> user.parentLastName;
 	cout << endl;
-	cout << "Address: "; cin >> user.address;
-	cout << endl;
-	cout << "Student First Name: "; cin >> user.studentFirstName;
-	cout << endl;
-	cout << "Student Last Name: "; cin >> user.studentLastName;
-	cout << endl;
-	cout << "Student Age: "; cin >> user.studentAge;
+	
+	createUser(users, userCount, maxId, user);
 }
+
+
 
 bool showMainMenu(USER_DATA* users, int& userCount, int& maxId)
 {
 	int choice;
 	cout << "-------USER MENU-------" << endl;
-	cout << "1. Create order" << endl;
+	cout << "1. Register" << endl;
+	cout << "2. Login" << endl;
 	cout << "6. Exit" << endl;
 	cout << "What is your choice?: ";
 	cin >> choice;
@@ -50,13 +55,13 @@ bool showMainMenu(USER_DATA* users, int& userCount, int& maxId)
 	switch (choice)
 	{
 	case 1:
-		insertData(users, userCount, maxId);
+		userRegister(users, userCount, maxId);
 		break;
 	case 6:
 		return false;
 		break;
 	}
-	return false;
+	return true;
 }
     
 
