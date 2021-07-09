@@ -58,21 +58,23 @@ void loginUser(USER_DATA* users, int& userCount, int& maxId)
 	cout << "The username or password you entered is incorrect.\n Please try again!\n";
 }
 
-bool showAdminMenu(USER_DATA* users, int& userCount, int& maxId)
-{
-	int choice;
-	cout <<
-}
+//bool showAdminMenu(USER_DATA* users, int& userCount, int& maxId)
+//}
+	//int choice;
+	//cout <<
+//}
 
 
 bool showMainMenu(USER_DATA* users, int& userCount, int& maxId)
 {
 	int choice;
 	cout << setw(70) << "-------LOGIN MENU-------" << endl;
-	cout << setw(59) << "1. Register" << endl;
-	cout << setw(56) << "2. Login" << endl;
-	cout << setw(55) << "6. Exit" << endl;
-	cout << setw(70) << "What is your choice?: ";
+	cout << setw(70) << "************************" << endl;
+	cout << setw(59) << "|1. Register"<< setw(10)<<"|" << endl;
+	cout << setw(56) << "|2. Login" << setw(13)<<"|"<< endl;
+	cout << setw(55) << "|6. Exit" << setw(14)<<"|"<< endl;
+	cout << setw(70) << "************************" << endl;
+	cout << setw(68) << "What is your choice?: ";
 	cin >> choice;
 	if (choice > 6 || choice < 1)
 	{
