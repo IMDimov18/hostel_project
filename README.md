@@ -1,5 +1,5 @@
 
-# <p align=center><img src="https://lh3.googleusercontent.com/proxy/6lSnKaok9Ys_W-QIlbUnMrLvBfdDdX_RxnLxIZUVdQ8sU2uCtazA4XWvu-E4t7VDC0Lm_QI4TCahGqqBytslYup71mvjTmsi7p_xfRnUDTi3QrxVdVCkogGH_gS_" width="35" height="35" />Hello, we are Team Hot Shots!<img src="https://lh3.googleusercontent.com/proxy/6lSnKaok9Ys_W-QIlbUnMrLvBfdDdX_RxnLxIZUVdQ8sU2uCtazA4XWvu-E4t7VDC0Lm_QI4TCahGqqBytslYup71mvjTmsi7p_xfRnUDTi3QrxVdVCkogGH_gS_" width="35" height="35" /></p>
+# <p align=center><img src="https://e7.pngegg.com/pngimages/666/289/png-clipart-light-mathematics-international-mathematical-union-transparency-and-translucency-math-blue-logo-thumbnail.png" width="35" height="35" />Hello, we are Team Hot Shots!<img src="https://e7.pngegg.com/pngimages/666/289/png-clipart-light-mathematics-international-mathematical-union-transparency-and-translucency-math-blue-logo-thumbnail.png" width="35" height="35" /></p>
 
 
 
