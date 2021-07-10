@@ -43,6 +43,8 @@ void userRegister(USER_DATA* users, int& userCount, int& maxId)
 
 bool showAdminMenu(USER_DATA* users, int& userCount, int& maxId)
 {
+	system("color B");
+
 	int choice;
 	cout << setw(70) << "-------ADMIN MENU-------" << endl;
 	cout << setw(60) << "1. Create User" << endl;
@@ -63,24 +65,37 @@ bool showAdminMenu(USER_DATA* users, int& userCount, int& maxId)
 
 void loginUser(USER_DATA* users, int& userCount, int& maxId)
 {
+	system("color B");
+
 	string username;
 	string pass;
+	string adminUsername = "admin";
+	string adminPass = "admin";
 
 	cout << "Username: "; cin >> username;
 	cout << "Password: "; cin >> pass;
 
-	for (int i = 0; i < maxId; i++)
+	if (username == adminUsername && pass == adminPass)
 	{
-		if (username == users[i].userName && pass == users[i].password)
-		{
-			cout << "Welcome, " << username << endl;
-			showAdminMenu(users, userCount, maxId);
-		}
+		cout << "Welcome, " << username << endl;
+		showAdminMenu(users, userCount, maxId);
 	}
 
-	cout << "The username or password you entered is incorrect.\n Please try again!\n";
-}
+	else
+	{
 
+		for (int i = 0; i < maxId; i++)
+		{
+			if (username == users[i].userName && pass == users[i].password)
+			{
+				cout << "Welcome, " << username << endl;
+				showAdminMenu(users, userCount, maxId);
+			}
+		}
+
+	}
+
+}
 
 
 
