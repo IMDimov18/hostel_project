@@ -41,6 +41,31 @@ void userRegister(USER_DATA* users, int& userCount, int& maxId)
 	createUser(users, userCount, maxId, user);
 }
 
+bool showUserMainMenu(USER_DATA* users, int& userCount, int& maxId)
+{
+	int choice;
+	cout << setw(70) << "-------USER MENU-------" << endl;
+	cout << setw(70) << "************************" << endl;
+	cout << setw(68) << "|1. Register A Student" << "|" << endl;
+	cout << setw(55) << "|2. Exit" << setw(14) << "|" << endl;
+	cout << setw(70) << "************************" << endl;
+	cout << setw(68) << "What is your choice?: ";
+	cin >> choice;
+	if (choice > 3 || choice < 1)
+	{
+		cout << "Please enter a valid number!: "; cin >> choice;
+	}
+	switch (choice)
+	{
+	case 1:
+		break;
+	case 2:
+		return false;
+		break;
+	}
+	return true;
+}
+
 bool showAdminMenu(USER_DATA* users, int& userCount, int& maxId)
 {
 	system("color B");
@@ -63,6 +88,17 @@ bool showAdminMenu(USER_DATA* users, int& userCount, int& maxId)
 
 }
 
+void showUserMenu(USER_DATA* users, int& userCount, int& maxId)
+{
+	bool showMenu;
+
+	do
+	{
+		showMenu = showUserMainMenu(users, userCount, maxId);
+	} while (showMenu);
+	cout << endl;
+}
+
 void loginUser(USER_DATA* users, int& userCount, int& maxId)
 {
 	system("color B");
@@ -71,6 +107,7 @@ void loginUser(USER_DATA* users, int& userCount, int& maxId)
 	string pass;
 	string adminUsername = "admin";
 	string adminPass = "admin";
+	bool isCorrect = false;
 
 	cout << "Username: "; cin >> username;
 	cout << "Password: "; cin >> pass;
@@ -88,11 +125,21 @@ void loginUser(USER_DATA* users, int& userCount, int& maxId)
 		{
 			if (username == users[i].userName && pass == users[i].password)
 			{
-				cout << "Welcome, " << username << endl;
-				showAdminMenu(users, userCount, maxId);
+				isCorrect = true;
 			}
 		}
 
+	}
+
+	if (isCorrect == true)
+	{
+		cout << "Welcome, " << username << endl;
+		showUserMenu(users, userCount, maxId);
+	}
+	else
+	{
+		cout << "The username or password you entered is incorrect."<<endl<<" Please, try again!" << endl<<endl;
+		loginUser(users, userCount, maxId);
 	}
 
 }
@@ -106,7 +153,7 @@ bool showMainMenu(USER_DATA* users, int& userCount, int& maxId)
 	cout << setw(70) << "************************" << endl;
 	cout << setw(59) << "|1. Register" << setw(10) << "|" << endl;
 	cout << setw(56) << "|2. Login" << setw(13) << "|" << endl;
-	cout << setw(55) << "|6. Exit" << setw(14) << "|" << endl;
+	cout << setw(55) << "|3. Exit" << setw(14) << "|" << endl;
 	cout << setw(70) << "************************" << endl;
 	cout << setw(68) << "What is your choice?: ";
 	cin >> choice;
