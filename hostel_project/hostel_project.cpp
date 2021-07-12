@@ -20,6 +20,30 @@ struct STUDENT_DATA
 	int studentId = 1;
 };
 
+int getUserById(USER_DATA* users, int& userCount, int id)
+{
+	for (int i = 0; i < userCount; i++)
+	{
+		if (users[i].id==id)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+USER_DATA getUser(USER_DATA* users, int& userCount, int id)
+{
+	int index = getUserById(users, userCount, id);
+	return users[index];
+}
+
+void updateUser(USER_DATA* users, int userCount, int id, USER_DATA newUser)
+{
+	int index = getUserById(users, userCount, id);
+	users[index] = newUser;
+}
+
 void showAllUsers(USER_DATA* users, int& maxId)
 {
 	for (int i = 0; i < maxId-1; i++)
@@ -27,6 +51,42 @@ void showAllUsers(USER_DATA* users, int& maxId)
 		cout << "Id: " << users[i].id << "  Username: " << users[i].userName << "  Password: " << users[i].password << "  First Name:  " << users[i].parentFirstName << "  Last Name: " << users[i].parentLastName << endl;
 		
 	}
+	cout << endl;
+	cout << endl;
+}
+
+void editUserById(USER_DATA* users, int& userCount, int& maxId)
+{
+	int id;
+	cout << "Enter the id of the user you want to edit: "; cin >> id;
+	USER_DATA user = getUser(users, userCount, id);
+	cout << "1. Username" << endl;
+	cout << "2. Password" << endl;
+	cout << "3. Parent First Name" << endl;
+	cout << "4. Parent Last Name" << endl;
+	int choice;
+	cout << "Your choice: "; cin >> choice;
+	switch (choice)
+	{
+	case 1:
+		cout << "Username: "; cin >> user.userName;
+		updateUser(users, userCount, id, user);
+		break;
+	case 2:
+		cout << "Password: "; cin >> user.password;
+		updateUser(users, userCount, id, user);
+		break;
+	case 3:
+		cout << "Parent First Name: "; cin >> user.parentFirstName;
+		updateUser(users, userCount, id, user);
+		break;
+	case 4:
+		cout << "Parent Last Name: "; cin >> user.parentLastName;
+		updateUser(users, userCount, id, user);
+		break;
+	}
+	cout << endl;
+	cout << "User edited successfully!" << endl;
 }
 
 void createUser(USER_DATA* users, int& userCount, int& maxId, USER_DATA user)
@@ -134,8 +194,12 @@ bool showAdminMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DAT
 
 		break;
 	case 2:
+	
+
 		break;
 	case 3:
+		editUserById(users, userCount, maxId);
+
 		break;
 	case 4:
 		break;
