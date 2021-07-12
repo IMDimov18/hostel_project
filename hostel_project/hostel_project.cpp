@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+
 using namespace std;
 
 struct USER_DATA
@@ -52,6 +53,14 @@ void showAllUsers(USER_DATA* users, int& maxId)
 	}
 	cout << endl;
 	cout << endl;
+}
+
+void showAllStudents(STUDENT_DATA* students, int& studentount, int& studentMaxId)
+{
+	for (int i = 0; i < studentMaxId-1; i++)
+	{
+		cout << "Id: " << students[i].studentId << "  Student First Name: " << students[i].studentFirstName<< "  Student Last Name: " << students[i].studentLastName<< " Student Address:  " << students[i].address<< "  Student Age: " << students[i].age << endl;
+	}
 }
 
 void editUserById(USER_DATA* users, int& userCount, int& maxId)
@@ -225,9 +234,12 @@ bool showAdminMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DAT
 
 		break;
 	case 4:
+		showAllStudents(students, studentCount, studentMaxId);
+
 		break;
 	case 5:
 		showAllUsers(users, maxId);
+
 		break;
 	case 6:
 		return false;
@@ -266,8 +278,6 @@ void loginUser(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* stude
 
 	string username;
 	string pass;
-	string adminUsername = "admin";
-	string adminPass = "admin";
 	bool isCorrect = false;
 
 	cout << "Username: "; cin >> username;
@@ -275,7 +285,7 @@ void loginUser(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* stude
 
 	if (username == "admin" && pass == "admin")
 	{
-		cout << "Welcome, " << username << endl;
+		cout << "Welcome, " << username << '!' << endl;
 		showAdminMenu(users, userCount, maxId, students, studentCount, studentMaxId);
 		isCorrect = true;
 	}
@@ -293,7 +303,7 @@ void loginUser(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* stude
 
 		if (isCorrect == true)
 		{
-			cout << "Welcome, " << username << endl;
+			cout << "Welcome, " << username << '!' << endl;
 			showUserMenu(users, userCount, maxId, students, studentCount, studentMaxId);
 		}
 
