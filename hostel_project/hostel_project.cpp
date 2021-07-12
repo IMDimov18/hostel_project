@@ -16,7 +16,7 @@ struct STUDENT_DATA
 	string studentFirstName;
 	string studentLastName;
 	string address;
-	int age;
+	int age=0;
 	int studentId = 1;
 };
 
@@ -24,7 +24,7 @@ int getUserById(USER_DATA* users, int& userCount, int id)
 {
 	for (int i = 0; i < userCount; i++)
 	{
-		if (users[i].id==id)
+		if (users[i].id == id)
 		{
 			return i;
 		}
@@ -46,10 +46,9 @@ void updateUser(USER_DATA* users, int userCount, int id, USER_DATA newUser)
 
 void showAllUsers(USER_DATA* users, int& maxId)
 {
-	for (int i = 0; i < maxId-1; i++)
+	for (int i = 0; i < maxId - 1; i++)
 	{
 		cout << "Id: " << users[i].id << "  Username: " << users[i].userName << "  Password: " << users[i].password << "  First Name:  " << users[i].parentFirstName << "  Last Name: " << users[i].parentLastName << endl;
-		
 	}
 	cout << endl;
 	cout << endl;
@@ -89,13 +88,35 @@ void editUserById(USER_DATA* users, int& userCount, int& maxId)
 	cout << "User edited successfully!" << endl;
 }
 
+void deleteUserById(USER_DATA* users, int& userCount, int id)
+{
+	int index = getUserById(users, userCount, id);
+	for (int i = index; i < userCount; i++)
+	{
+		users[i] = users[i + 1];
+		users[i].id--;
+	}
+	userCount--;
+	cout << endl;
+	cout << "User deleted successfully!" << endl;
+}
+
+void deleteUserMenu(USER_DATA* users, int& userCount, int& maxId)
+{
+	int userId;
+	cout << "Enter the Id of the user you want to delete: ";
+	cin >> userId;
+	deleteUserById(users, userCount, userId);
+	maxId--;
+}
+
 void createUser(USER_DATA* users, int& userCount, int& maxId, USER_DATA user)
 {
 	user.id = maxId++;
 	users[userCount] = user;
 	userCount++;
 
-	cout << "Student registered successfully!" << endl;
+	cout << "User registered successfully!" << endl;
 }
 
 void createStudent(STUDENT_DATA* students, int& studentCount, int& studentMaxId, STUDENT_DATA student)
@@ -143,7 +164,7 @@ bool showUserMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA
 	int choice;
 	cout << setw(70) << "-------USER MENU-------" << endl;
 	cout << setw(70) << "************************" << endl;
-	cout << setw(68) << "|1. Register A Student" <<setw(2)<< "|" << endl;
+	cout << setw(68) << "|1. Register A Student" << setw(2) << "|" << endl;
 	cout << setw(54) << "|2. Exit" << setw(16) << "|" << endl;
 	cout << setw(70) << "************************" << endl;
 	cout << setw(68) << "What is your choice?: ";
@@ -172,13 +193,15 @@ bool showAdminMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DAT
 
 	int choice;
 	cout << setw(70) << "-------ADMIN MENU-------" << endl;
-	cout << setw(60) << "1. Create User" << endl;
-	cout << setw(66) << "2. Delete User by Id" << endl;
-	cout << setw(64) << "3. Edit User by Id" << endl;
-	cout << setw(80) << "4. Show all kids currently waiting" << endl;
-	cout << setw(74) << "5. Show all registered users" << endl;
-	cout << setw(53) << "6. Exit" << endl;
-	cout << setw(70) << "What is your choice?: ";
+	cout << setw(71) << "**************************" << endl;
+	cout << setw(61) << "|1. Create User" << setw(9) <<"|"<< endl;
+	cout << setw(67) << "|2. Delete User by Id" << setw(3) << "|" << endl;
+	cout << setw(65) << "|3. Edit User by Id" << setw(5) << "|" << endl;
+	cout << setw(67) << "|4. Show all students" << setw(3) << "|" << endl;
+	cout << setw(64) << "|5. Show all users" << setw(6) << "|" << endl;
+	cout << setw(54) << "|6. Exit" << setw(16) << "|" << endl;
+	cout << setw(71) << "**************************" << endl;
+	cout << setw(68) << "What is your choice?: ";
 	cin >> choice;
 	cout << endl;
 	cout << endl;
@@ -194,7 +217,7 @@ bool showAdminMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DAT
 
 		break;
 	case 2:
-	
+		deleteUserMenu(users, userCount, maxId);
 
 		break;
 	case 3:
@@ -327,7 +350,7 @@ int main()
 	bool showMenu;
 	STUDENT_DATA students[10];
 	int studentMaxId = 1;
-	int studentCount=0;
+	int studentCount = 0;
 
 	do
 	{
