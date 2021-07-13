@@ -17,7 +17,7 @@ struct STUDENT_DATA
 	string studentFirstName;
 	string studentLastName;
 	string address;
-	int age=0;
+	int age = 0;
 	int studentId = 1;
 };
 
@@ -81,9 +81,9 @@ void showAllUsers(USER_DATA* users, int& maxId)
 
 void showAllStudents(STUDENT_DATA* students, int& studentount, int& studentMaxId)
 {
-	for (int i = 0; i < studentMaxId-1; i++)
+	for (int i = 0; i < studentMaxId - 1; i++)
 	{
-		cout << "Id: " << students[i].studentId << " | Student First Name: " << students[i].studentFirstName<< " | Student Last Name: " << students[i].studentLastName<< " | Student Address:  " << students[i].address<< " | Student Age: " << students[i].age << endl;
+		cout << "Id: " << students[i].studentId << " | Student First Name: " << students[i].studentFirstName << " | Student Last Name: " << students[i].studentLastName << " | Student Address:  " << students[i].address << " | Student Age: " << students[i].age << endl;
 	}
 }
 
@@ -122,7 +122,7 @@ void editStudentById(STUDENT_DATA* students, int& studentCount, int& studentMaxI
 	cout << "Student edited successfully!" << endl;
 }
 
-void editUserById(USER_DATA* users, int& userCount, int& maxId)
+void editUserById(USER_DATA* users, int& userCount, int& maxId) //the menu for editing the data under a given id
 {
 	int id;
 	cout << "Enter the id of the user you want to edit: "; cin >> id;
@@ -157,7 +157,7 @@ void editUserById(USER_DATA* users, int& userCount, int& maxId)
 	cout << "User edited successfully!" << endl;
 }
 
-void deleteUserById(USER_DATA* users, int& userCount, int id)
+void deleteUserById(USER_DATA* users, int& userCount, int id) //deletes the user under the given id
 {
 	int index = getUserById(users, userCount, id);
 	for (int i = index; i < userCount; i++)
@@ -171,7 +171,7 @@ void deleteUserById(USER_DATA* users, int& userCount, int id)
 	cout << "User deleted successfully!" << endl;
 }
 
-void deleteUserMenu(USER_DATA* users, int& userCount, int& maxId)
+void deleteUserMenu(USER_DATA* users, int& userCount, int& maxId) //takes the id that the admin entered
 {
 	int userId;
 	cout << "Enter the Id of the user you want to delete: ";
@@ -180,7 +180,7 @@ void deleteUserMenu(USER_DATA* users, int& userCount, int& maxId)
 	maxId--;
 }
 
-void deleteStudentById(STUDENT_DATA* students, int& studentCount, int id)
+void deleteStudentById(STUDENT_DATA* students, int& studentCount, int id) //deletes the student under the given id
 {
 	int index = getStudentById(students, studentCount, id);
 	for (int i = index; i < studentCount; i++)
@@ -194,7 +194,7 @@ void deleteStudentById(STUDENT_DATA* students, int& studentCount, int id)
 	cout << "Student deleted successfully!" << endl;
 }
 
-void deleteStudentMenu(STUDENT_DATA* students, int& studentCount, int& studentMaxId)
+void deleteStudentMenu(STUDENT_DATA* students, int& studentCount, int& studentMaxId) //takes the id that the admin entered
 {
 	int userId;
 	cout << "Enter the Id of the student you want to delete: ";
@@ -203,7 +203,7 @@ void deleteStudentMenu(STUDENT_DATA* students, int& studentCount, int& studentMa
 	studentMaxId--;
 }
 
-void createUser(USER_DATA* users, int& userCount, int& maxId, USER_DATA user)
+void createUser(USER_DATA* users, int& userCount, int& maxId, USER_DATA user) //updates the id of the users
 {
 	user.id = maxId++;
 	users[userCount] = user;
@@ -212,7 +212,7 @@ void createUser(USER_DATA* users, int& userCount, int& maxId, USER_DATA user)
 	cout << "User registered successfully!" << endl;
 }
 
-void createStudent(STUDENT_DATA* students, int& studentCount, int& studentMaxId, STUDENT_DATA student)
+void createStudent(STUDENT_DATA* students, int& studentCount, int& studentMaxId, STUDENT_DATA student) //updates the id of the students
 {
 	student.studentId = studentMaxId++;
 	students[studentCount] = student;
@@ -221,7 +221,7 @@ void createStudent(STUDENT_DATA* students, int& studentCount, int& studentMaxId,
 	cout << "Student registered successfully!" << endl;
 }
 
-void registerStudent(STUDENT_DATA* students, int& studentCount, int& studentMaxId)
+void registerStudent(STUDENT_DATA* students, int& studentCount, int& studentMaxId) //registers the new students
 {
 	STUDENT_DATA student;
 	cout << "Student First Name: "; cin >> student.studentFirstName;
@@ -236,11 +236,11 @@ void registerStudent(STUDENT_DATA* students, int& studentCount, int& studentMaxI
 	createStudent(students, studentCount, studentMaxId, student);
 }
 
-bool checkUserName(USER_DATA* users, int& userCount, int&maxId, USER_DATA user)
+bool checkUserName(USER_DATA* users, int& userCount, int& maxId, USER_DATA user) //checks if the username of the new user is already being used by other user 
 {
 	for (int i = 0; i < userCount; i++)
 	{
-		if (user.userName==users[i].userName)
+		if (user.userName == users[i].userName)
 		{
 			return true;
 			break;
@@ -249,11 +249,11 @@ bool checkUserName(USER_DATA* users, int& userCount, int&maxId, USER_DATA user)
 	return false;
 }
 
-void userRegister(USER_DATA* users, int& userCount, int& maxId)
+void userRegister(USER_DATA* users, int& userCount, int& maxId) //the fucntions that makes new accounts for the users
 {
 	USER_DATA user;
 	cout << "Username: "; cin >> user.userName;
-	if (checkUserName(users, userCount, maxId, user)==true)
+	if (checkUserName(users, userCount, maxId, user) == true)
 	{
 		cout << "The username you entered is already taken. Please enter a new username!" << endl;
 		cout << endl;
@@ -274,7 +274,7 @@ void userRegister(USER_DATA* users, int& userCount, int& maxId)
 	}
 }
 
-bool showUserMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* students, int& studentCount, int& studentMaxId)
+bool showUserMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* students, int& studentCount, int& studentMaxId) //the regular user menu with all available options for the regular user
 {
 	int choice;
 	cout << setw(70) << "-------USER MENU-------" << endl;
@@ -303,14 +303,14 @@ bool showUserMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA
 	return true;
 }
 
-bool showAdminMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* students, int& studentCount, int& studentMaxId)
+bool showAdminMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* students, int& studentCount, int& studentMaxId) //the admin menu with all available options for the admin
 {
 	system("color B");
 
 	int choice;
 	cout << setw(70) << "-------ADMIN MENU-------" << endl;
 	cout << setw(71) << "**************************" << endl;
-	cout << setw(61) << "|1. Create User" << setw(9) <<"|"<< endl;
+	cout << setw(61) << "|1. Create User" << setw(9) << "|" << endl;
 	cout << setw(67) << "|2. Delete User by Id" << setw(3) << "|" << endl;
 	cout << setw(65) << "|3. Edit User by Id" << setw(5) << "|" << endl;
 	cout << setw(64) << "|4. Create Student" << setw(6) << "|" << endl;
@@ -380,7 +380,7 @@ bool showAdminMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DAT
 
 }
 
-void showUserMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* students, int& studentCount, int& studentMaxId)
+void showUserMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* students, int& studentCount, int& studentMaxId) //the loop that keeps the admin menu showing up
 {
 	bool showMenu;
 
@@ -391,7 +391,7 @@ void showUserMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* st
 	cout << endl;
 }
 
-void showAdminMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* students, int& studentCount, int& studentMaxId)
+void showAdminMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* students, int& studentCount, int& studentMaxId) //the loop that keeps the admin menu showing up
 {
 	bool showMenu;
 
@@ -402,7 +402,7 @@ void showAdminMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* s
 	cout << endl;
 }
 
-void loginUser(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* students, int& studentCount, int& studentMaxId)
+void loginUser(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* students, int& studentCount, int& studentMaxId) //checks if the entered data is for admin or regular user
 {
 	system("color B");
 
@@ -447,9 +447,7 @@ void loginUser(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* stude
 
 }
 
-
-
-bool showMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* students, int& studentCount, int& studentMaxId)
+bool showMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* students, int& studentCount, int& studentMaxId) //show the main menu where the users register or log in to their accounts
 {
 	int choice;
 	cout << setw(70) << "-------LOGIN MENU-------" << endl;
