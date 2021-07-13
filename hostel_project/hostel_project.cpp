@@ -21,6 +21,18 @@ struct STUDENT_DATA
 	int studentId = 1;
 };
 
+int getStudentById(STUDENT_DATA* students, int& studentCount, int id)
+{
+	for (int i = 0; i < studentCount; i++)
+	{
+		if (students[i].studentId == id)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
 int getUserById(USER_DATA* users, int& userCount, int id)
 {
 	for (int i = 0; i < userCount; i++)
@@ -33,10 +45,22 @@ int getUserById(USER_DATA* users, int& userCount, int id)
 	return -1;
 }
 
+STUDENT_DATA getStudent(STUDENT_DATA* students, int& studentCount, int id)
+{
+	int index = getStudentById(students, studentCount, id);
+	return students[index];
+}
+
 USER_DATA getUser(USER_DATA* users, int& userCount, int id)
 {
 	int index = getUserById(users, userCount, id);
 	return users[index];
+}
+
+void updateStudent(STUDENT_DATA* students, int studentCount, int id, STUDENT_DATA newStudent)
+{
+	int index = getStudentById(students, studentCount, id);
+	students[index] = newStudent;
 }
 
 void updateUser(USER_DATA* users, int userCount, int id, USER_DATA newUser)
@@ -49,7 +73,7 @@ void showAllUsers(USER_DATA* users, int& maxId)
 {
 	for (int i = 0; i < maxId - 1; i++)
 	{
-		cout << "Id: " << users[i].id << "  Username: " << users[i].userName << "  Password: " << users[i].password << "  First Name:  " << users[i].parentFirstName << "  Last Name: " << users[i].parentLastName << endl;
+		cout << "Id: " << users[i].id << " | Username: " << users[i].userName << " | Password: " << users[i].password << " | First Name:  " << users[i].parentFirstName << " | Last Name: " << users[i].parentLastName << endl;
 	}
 	cout << endl;
 	cout << endl;
@@ -59,8 +83,43 @@ void showAllStudents(STUDENT_DATA* students, int& studentount, int& studentMaxId
 {
 	for (int i = 0; i < studentMaxId-1; i++)
 	{
-		cout << "Id: " << students[i].studentId << "  Student First Name: " << students[i].studentFirstName<< "  Student Last Name: " << students[i].studentLastName<< " Student Address:  " << students[i].address<< "  Student Age: " << students[i].age << endl;
+		cout << "Id: " << students[i].studentId << " | Student First Name: " << students[i].studentFirstName<< " | Student Last Name: " << students[i].studentLastName<< " | Student Address:  " << students[i].address<< " | Student Age: " << students[i].age << endl;
 	}
+}
+
+void editStudentById(STUDENT_DATA* students, int& studentCount, int& studentMaxId)
+{
+	int id;
+	cout << "Enter the id of the student you want to edit: "; cin >> id;
+	STUDENT_DATA student = getStudent(students, studentCount, id);
+	cout << "1. Student First Name" << endl;
+	cout << "2. Student Last Name" << endl;
+	cout << "3. Student Address" << endl;
+	cout << "4. Student Age" << endl;
+	int choice;
+	cout << "Your choice: "; cin >> choice;
+	switch (choice)
+	{
+	case 1:
+		cout << "Student First Name: "; cin >> student.studentFirstName;
+		updateStudent(students, studentCount, id, student);
+		break;
+	case 2:
+		cout << "Student Last Name: "; cin >> student.studentLastName;
+		updateStudent(students, studentCount, id, student);
+		break;
+	case 3:
+		cout << "Student Address: "; cin >> student.address;
+		updateStudent(students, studentCount, id, student);
+		break;
+	case 4:
+		cout << "Student Age: "; cin >> student.age;
+		updateStudent(students, studentCount, id, student);
+		break;
+	}
+	cout << endl;
+	system("CLS");
+	cout << "Student edited successfully!" << endl;
 }
 
 void editUserById(USER_DATA* users, int& userCount, int& maxId)
@@ -94,6 +153,7 @@ void editUserById(USER_DATA* users, int& userCount, int& maxId)
 		break;
 	}
 	cout << endl;
+	system("CLS");
 	cout << "User edited successfully!" << endl;
 }
 
@@ -107,6 +167,7 @@ void deleteUserById(USER_DATA* users, int& userCount, int id)
 	}
 	userCount--;
 	cout << endl;
+	system("CLS");
 	cout << "User deleted successfully!" << endl;
 }
 
@@ -119,12 +180,35 @@ void deleteUserMenu(USER_DATA* users, int& userCount, int& maxId)
 	maxId--;
 }
 
+void deleteStudentById(STUDENT_DATA* students, int& studentCount, int id)
+{
+	int index = getStudentById(students, studentCount, id);
+	for (int i = index; i < studentCount; i++)
+	{
+		students[i] = students[i + 1];
+		students[i].studentId--;
+	}
+	studentCount--;
+	cout << endl;
+	system("CLS");
+	cout << "Student deleted successfully!" << endl;
+}
+
+void deleteStudentMenu(STUDENT_DATA* students, int& studentCount, int& studentMaxId)
+{
+	int userId;
+	cout << "Enter the Id of the student you want to delete: ";
+	cin >> userId;
+	deleteStudentById(students, studentCount, userId);
+	studentMaxId--;
+}
+
 void createUser(USER_DATA* users, int& userCount, int& maxId, USER_DATA user)
 {
 	user.id = maxId++;
 	users[userCount] = user;
 	userCount++;
-
+	system("CLS");
 	cout << "User registered successfully!" << endl;
 }
 
@@ -133,7 +217,7 @@ void createStudent(STUDENT_DATA* students, int& studentCount, int& studentMaxId,
 	student.studentId = studentMaxId++;
 	students[studentCount] = student;
 	studentCount++;
-
+	system("CLS");
 	cout << "Student registered successfully!" << endl;
 }
 
@@ -152,20 +236,40 @@ void registerStudent(STUDENT_DATA* students, int& studentCount, int& studentMaxI
 	createStudent(students, studentCount, studentMaxId, student);
 }
 
+bool checkUserName(USER_DATA* users, int& userCount, int&maxId, USER_DATA user)
+{
+	for (int i = 0; i < userCount; i++)
+	{
+		if (user.userName==users[i].userName)
+		{
+			return true;
+			break;
+		}
+	}
+	return false;
+}
+
 void userRegister(USER_DATA* users, int& userCount, int& maxId)
 {
 	USER_DATA user;
 	cout << "Username: "; cin >> user.userName;
-	cout << endl;
-	cout << "Password: "; cin >> user.password;
-	cout << endl;
-	cout << "Parent First Name: "; cin >> user.parentFirstName;
-	cout << endl;
-	cout << "Parent Last Name: "; cin >> user.parentLastName;
-	cout << endl;
+	if (checkUserName(users, userCount, maxId, user)==true)
+	{
+		cout << "The username you entered is already taken. Please enter a new username!" << endl;
+		userRegister(users, userCount, maxId);
+	}
+	else
+	{
+		cout << endl;
+		cout << "Password: "; cin >> user.password;
+		cout << endl;
+		cout << "Parent First Name: "; cin >> user.parentFirstName;
+		cout << endl;
+		cout << "Parent Last Name: "; cin >> user.parentLastName;
+		cout << endl;
 
-	createUser(users, userCount, maxId, user);
-
+		createUser(users, userCount, maxId, user);
+	}
 }
 
 bool showUserMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA* students, int& studentCount, int& studentMaxId)
@@ -190,6 +294,7 @@ bool showUserMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DATA
 		registerStudent(students, studentCount, studentMaxId);
 		break;
 	case 2:
+		system("CLS");
 		return false;
 		break;
 	}
@@ -206,42 +311,65 @@ bool showAdminMainMenu(USER_DATA* users, int& userCount, int& maxId, STUDENT_DAT
 	cout << setw(61) << "|1. Create User" << setw(9) <<"|"<< endl;
 	cout << setw(67) << "|2. Delete User by Id" << setw(3) << "|" << endl;
 	cout << setw(65) << "|3. Edit User by Id" << setw(5) << "|" << endl;
-	cout << setw(67) << "|4. Show all students" << setw(3) << "|" << endl;
-	cout << setw(64) << "|5. Show all users" << setw(6) << "|" << endl;
-	cout << setw(54) << "|6. Exit" << setw(16) << "|" << endl;
+	cout << setw(64) << "|4. Create Student" << setw(6) << "|" << endl;
+	cout << setw(64) << "|5. Delete Student" << setw(6) << "|" << endl;
+	cout << setw(62) << "|6. Edit Student" << setw(8) << "|" << endl;
+	cout << setw(67) << "|7. Show all students" << setw(3) << "|" << endl;
+	cout << setw(64) << "|8. Show all users" << setw(6) << "|" << endl;
+	cout << setw(54) << "|9. Exit" << setw(16) << "|" << endl;
 	cout << setw(71) << "**************************" << endl;
 	cout << setw(68) << "What is your choice?: ";
 	cin >> choice;
 	cout << endl;
 	cout << endl;
-	if (choice > 6 || choice < 1)
+	if (choice > 9 || choice < 1)
 	{
 		cout << "Please enter a valid number!: "; cin >> choice;
 	}
 	switch (choice)
 	{
 	case 1:
-
+		system("CLS");
 		userRegister(users, userCount, maxId);
 
 		break;
 	case 2:
+		system("CLS");
 		deleteUserMenu(users, userCount, maxId);
 
 		break;
 	case 3:
+		system("CLS");
 		editUserById(users, userCount, maxId);
 
 		break;
 	case 4:
-		showAllStudents(students, studentCount, studentMaxId);
+		system("CLS");
+		registerStudent(students, studentCount, studentMaxId);
 
 		break;
 	case 5:
-		showAllUsers(users, maxId);
+		system("CLS");
+		deleteStudentMenu(students, studentCount, studentMaxId);
 
 		break;
 	case 6:
+		system("CLS");
+		editStudentById(students, studentCount, studentMaxId);
+
+		break;
+	case 7:
+		system("CLS");
+		showAllStudents(students, studentCount, studentMaxId);
+
+		break;
+	case 8:
+		system("CLS");
+		showAllUsers(users, maxId);
+
+		break;
+	case 9:
+		system("CLS");
 		return false;
 		break;
 	}
