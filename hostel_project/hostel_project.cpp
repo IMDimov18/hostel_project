@@ -256,6 +256,8 @@ void userRegister(USER_DATA* users, int& userCount, int& maxId)
 	if (checkUserName(users, userCount, maxId, user)==true)
 	{
 		cout << "The username you entered is already taken. Please enter a new username!" << endl;
+		cout << endl;
+		cout << endl;
 		userRegister(users, userCount, maxId);
 	}
 	else
