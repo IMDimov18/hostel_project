@@ -45,31 +45,31 @@ int getUserById(USER_DATA* users, int& userCount, int id)
 	return -1;
 }
 
-STUDENT_DATA getStudent(STUDENT_DATA* students, int& studentCount, int id)
+STUDENT_DATA getStudent(STUDENT_DATA* students, int& studentCount, int id) //returns the index of the student that is being searched
 {
 	int index = getStudentById(students, studentCount, id);
 	return students[index];
 }
 
-USER_DATA getUser(USER_DATA* users, int& userCount, int id)
+USER_DATA getUser(USER_DATA* users, int& userCount, int id) //returns the index of the users that is being searched
 {
 	int index = getUserById(users, userCount, id);
 	return users[index];
 }
 
-void updateStudent(STUDENT_DATA* students, int studentCount, int id, STUDENT_DATA newStudent)
+void updateStudent(STUDENT_DATA* students, int studentCount, int id, STUDENT_DATA newStudent) //overwrites the students data
 {
 	int index = getStudentById(students, studentCount, id);
 	students[index] = newStudent;
 }
 
-void updateUser(USER_DATA* users, int userCount, int id, USER_DATA newUser)
+void updateUser(USER_DATA* users, int userCount, int id, USER_DATA newUser) //overwrites the users data
 {
 	int index = getUserById(users, userCount, id);
 	users[index] = newUser;
 }
 
-void showAllUsers(USER_DATA* users, int& maxId)
+void showAllUsers(USER_DATA* users, int& maxId)//show all users currently registered
 {
 	for (int i = 0; i < maxId - 1; i++)
 	{
@@ -79,7 +79,7 @@ void showAllUsers(USER_DATA* users, int& maxId)
 	cout << endl;
 }
 
-void showAllStudents(STUDENT_DATA* students, int& studentount, int& studentMaxId)
+void showAllStudents(STUDENT_DATA* students, int& studentount, int& studentMaxId) //show all students currently registered
 {
 	for (int i = 0; i < studentMaxId - 1; i++)
 	{
@@ -87,7 +87,7 @@ void showAllStudents(STUDENT_DATA* students, int& studentount, int& studentMaxId
 	}
 }
 
-void editStudentById(STUDENT_DATA* students, int& studentCount, int& studentMaxId)
+void editStudentById(STUDENT_DATA* students, int& studentCount, int& studentMaxId) //showing the edit user menu
 {
 	int id;
 	cout << "Enter the id of the student you want to edit: "; cin >> id;
