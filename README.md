@@ -10,6 +10,7 @@
 
 ## <p align=center><img src="https://i.dlpng.com/static/png/6800398_preview.png" width="25" height="25" />  Description of the application <img src="https://i.dlpng.com/static/png/6800398_preview.png" width="25" height="25" /></p>
 
+
 The app will manage a list of applications made by parents to apply for students aged 12 to 16 to be placed in a dormitory at a school.
 
 The system will require parental registration. Each parent will be presented with a username, password, first name, last name, address, name and surname of the student, age of the student.
@@ -22,17 +23,17 @@ A functionality will be created that will search by certain criteria: address, a
  
  <tr>
     <td>
-Our presentation and documentation here: <br><br>
+      Our presentation and documentation here: <br><br>
      
-- [PRESENTATION](https://codingburgas-my.sharepoint.com/:p:/r/personal/tdbozhinov18_codingburgas_bg/_layouts/15/Doc.aspx?sourcedoc=%7BDA1D612D-EDFD-43F4-95B9-6410FD64D316%7D&file=Presentation13.pptx&wdOrigin=OFFICECOM-WEB.START.REC&ct=1626167129596&action=edit&mobileredirect=true)
-- [DOCUMENTATION](https://codingburgas-my.sharepoint.com/:w:/r/personal/tdbozhinov18_codingburgas_bg/_layouts/15/Doc.aspx?sourcedoc=%7B6651F81B-A01B-47B2-8D7F-EA5278A997CD%7D&file=team-hot-shots-main-documentation.docx&action=default&mobileredirect=true&DefaultItemOpen=1&ct=1626172209664&wdOrigin=OFFICECOM-WEB.START.OTHER&cid=42c473ef-0b2b-4830-bdd3-81650bf8150e)
+- [PRESENTATION](https://github.com/IMDimov18/hostel_project/blob/master/Documents/Documentation%20and%20presentation/team-hot-shots-presentation.pptx)
+- [DOCUMENTATION](https://github.com/IMDimov18/hostel_project/blob/master/Documents/Documentation%20and%20presentation/team-hot-shots-main-documentation.docx)
   </td>
   
 <td>
 Our QA test cases and test plan  here: <br><br>
  
-- [QA TEST CASES](https://codingburgas-my.sharepoint.com/:x:/r/personal/tdbozhinov18_codingburgas_bg/_layouts/15/Doc.aspx?sourcedoc=%7BFD5AF361-CB06-4D1C-9AF9-8E94122B620F%7D&file=team-hot-shots-qa-test-cases%201.xlsx&action=edit&mobileredirect=true&wdNewAndOpenCt=1626172678654&ct=1626172678654&wdPreviousSession=f6c44328-c30a-4f06-b353-ad7a90c1cf35&wdOrigin=OFFICECOM-WEB.START.UPLOAD)
-- [TEST PLAN](https://codingburgas-my.sharepoint.com/:w:/r/personal/tdbozhinov18_codingburgas_bg/_layouts/15/Doc.aspx?sourcedoc=%7B4334F293-FF5D-43CF-98A2-B2B306955A98%7D&file=team-hot-shots-qa-test-plan%201.docx&action=edit&mobileredirect=true&wdNewAndOpenCt=1626172710885&ct=1626172710885&wdPreviousSession=e76120f1-5c01-49a2-9dd6-7a5351d9d285&wdOrigin=OFFICECOM-WEB.START.UPLOAD)
+- [QA TEST CASES](https://github.com/IMDimov18/hostel_project/blob/master/Documents/QA%20documents/team-hot-shots-qa-test-cases.xlsx)
+- [TEST PLAN](https://github.com/IMDimov18/hostel_project/blob/master/Documents/QA%20documents/team-hot-shots-qa-test-plan.docx)
   </td>
  </tr>
  </table>
@@ -42,8 +43,10 @@ Our QA test cases and test plan  here: <br><br>
 
 ## <p align=center><img src="https://icon-library.com/images/download-icon-transparent-background/download-icon-transparent-background-9.jpg" width="25" height="25" /> Installation <img src="https://icon-library.com/images/download-icon-transparent-background/download-icon-transparent-background-9.jpg" width="26" height="26" /></p>
 
- - Download the app from [github](https://github.com/IMDimov18/hostel_project) by pressing the green clone button.
-
+<p align="center">
+ If you want to download our application, you can do it from our <a href="https://github.com/IMDimov18/hostel_project">GITHUB</a> by pressing the green clone button.
+</p>
+ 
 ---
 <br>
 
@@ -72,8 +75,8 @@ Our QA test cases and test plan  here: <br><br>
    <td>
      <br>
     
-- Ivo dimov
-- Todor Bozhinov 
+- Ivo Miroslavov Dimov
+- Todor Dinkov Bozhinov 
   </td>
  </tr>
 
@@ -83,6 +86,7 @@ Our QA test cases and test plan  here: <br><br>
 <br>
 
 ## <p align=center><img src="https://www.pinclipart.com/picdir/middle/327-3277775_service-catalog-academic-technologies-transparent-background-e-waste.png" width="25" height="25" /> Used technologies <img src="https://www.pinclipart.com/picdir/middle/327-3277775_service-catalog-academic-technologies-transparent-background-e-waste.png" width="26" height="26" /></p>
+
 - <img src="https://media.discordapp.net/attachments/815253581149896790/818134527842582578/Visual_Studio_Icon_2019.svg.png?width=541&height=541" width="20"> Visual studio
 - <img src="https://media.discordapp.net/attachments/815253581149896790/818134368848969728/1043px-Microsoft_Excel_2013_logo.svg_.png?width=551&height=541" width="20"> Excel
 -  <img src="https://media.discordapp.net/attachments/815253581149896790/818133539903111188/Microsoft_Word_logo.png" width="20"> Word
